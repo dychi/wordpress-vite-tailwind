@@ -22,6 +22,6 @@ jobs:
           port: ${{ secrets.FTP_PORT_DEV }}
           local-dir: ./vite-tailwind-theme/
           server-dir: ${{ secrets.SERVER_DIRECTORY_DEV }}
-          protocol: "ftps"
+          protocol: "ftp"
           log-level: "verbose"
           timeout: 600000
