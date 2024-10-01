@@ -35,6 +35,9 @@ jobs:
         run: |
           pnpm run tw:build
 
+      - name: Delete node_modules
+        run: rm -rf vite-tailwind-theme/node_modules
+
       - name: 📂 Sync files
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
