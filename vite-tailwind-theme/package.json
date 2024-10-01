@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "ts:build": "tsc --outDir dist/js --allowJs",
-    "tw:build": "pnpx tailwindcss -i ./style.css -o ./dist/style.css --watch",
+    "tw:build": "pnpx tailwindcss -i ./style.css -o ./dist/style.css",
+    "tw:build:watch": "pnpx tailwindcss -i ./style.css -o ./dist/style.css --watch",
     "preview": "vite preview"
   },
   "devDependencies": {
