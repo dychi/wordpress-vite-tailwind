@@ -1,0 +1,24 @@
+name: Deploy Theme on push to develop
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-dev:
+    name: Deploy-Dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER_DEV }}
+          username: ${{ secrets.FTP_USERNAME_DEV }}
+          password: ${{ secrets.FTP_PASSWORD_DEV }}
+          port: ${{ secrets.FTP_PORT_DEV }}
+          local-dir: ./vite-tailwind-theme/
+          server-dir: ${{ secrets.SERVER_DIRECTORY_DEV }}
