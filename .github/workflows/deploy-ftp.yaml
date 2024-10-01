@@ -34,6 +34,7 @@ jobs:
         working-directory: ./vite-tailwind-theme
         run: |
           pnpm run tw:build
+          ls -la
 
       - name: Delete node_modules
         run: rm -rf vite-tailwind-theme/node_modules
