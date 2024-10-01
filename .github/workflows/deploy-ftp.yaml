@@ -13,25 +13,23 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      - name: 📂 Sync files
-        uses: Dylan700/sftp-upload-action@v1.2.3
-        with:
-          server: ${{ secrets.FTP_SERVER_DEV }}
-          username: ${{ secrets.FTP_USERNAME_DEV }}
-          password: ${{ secrets.FTP_PASSWORD_DEV }}
-          port: ${{ secrets.FTP_PORT_DEV }}
-          uploads: |
-            ./vite-tailwind-theme/ => .${{ secrets.SERVER_DIRECTORY_DEV }}
+      #   - name: 📂 Sync files
+      #     uses: Dylan700/sftp-upload-action@v1.2.3
+      #     with:
+      #       server: ${{ secrets.FTP_SERVER_DEV }}
+      #       username: ${{ secrets.FTP_USERNAME_DEV }}
+      #       password: ${{ secrets.FTP_PASSWORD_DEV }}
+      #       port: ${{ secrets.FTP_PORT_DEV }}
+      #       uploads: |
+      #         ./vite-tailwind-theme/ => .${{ secrets.SERVER_DIRECTORY_DEV }}
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_SERVER_DEV }}
           username: ${{ secrets.FTP_USERNAME_DEV }}
-          password: ${{ secrets.FTP_PASSWORD_DEV }}
+          server: ${{ secrets.FTP_SERVER_DEV }}
           port: ${{ secrets.FTP_PORT_DEV }}
-          local-dir: ./vite-tailwind-theme/
-          server-dir: ${{ secrets.SERVER_DIRECTORY_DEV }}
-          protocol: "ftp"
-          log-level: "verbose"
-          timeout: 600000
+          local_path: "./vite-tailwind-theme/*"
+          remote_path: ${{ secrets.SERVER_DIRECTORY_DEV }}
+          sftp_only: true
+          password: ${{ secrets.FTP_PASSWORD_DEV }}
